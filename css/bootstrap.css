@@ -3976,25 +3976,25 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
   list-style: none;
 }
-.nav > li {
+.nav  li {
   position: relative;
   display: block;
 }
-.nav > li > a {
+.nav  li > a {
   position: relative;
   display: block;
   padding: 10px 15px;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
+.nav  li > a:hover,
+.nav  li > a:focus {
   text-decoration: none;
   background-color: #eee;
 }
-.nav > li.disabled > a {
+.nav  li.disabled > a {
   color: #777;
 }
-.nav > li.disabled > a:hover,
-.nav > li.disabled > a:focus {
+.nav  li.disabled > a:hover,
+.nav  li.disabled > a:focus {
   color: #777;
   text-decoration: none;
   cursor: not-allowed;
@@ -4012,7 +4012,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   overflow: hidden;
   background-color: #e5e5e5;
 }
-.nav > li > a > img {
+.nav  li > a > img {
   max-width: none;
 }
 .nav-tabs {
@@ -4084,18 +4084,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-bottom-color: #fff;
   }
 }
-.nav-pills > li {
+.nav-pills li {
   float: left;
 }
-.nav-pills > li > a {
+.nav-pills li > a {
   border-radius: 4px;
 }
-.nav-pills > li + li {
+.nav-pills li + li {
   margin-left: 2px;
 }
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
+.nav-pills li.active > a,
+.nav-pills li.active > a:hover,
+.nav-pills li.active > a:focus {
   color: #fff;
   background-color: #337ab7;
 }
@@ -4109,10 +4109,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-justified {
   width: 100%;
 }
-.nav-justified > li {
+.nav-justified li {
   float: none;
 }
-.nav-justified > li > a {
+.nav-justified li > a {
   margin-bottom: 5px;
   text-align: center;
 }
