@@ -1,6 +1,8 @@
 .masthead {
     padding: 20px;
 }
+
+
 h3 {
     display: inline;
 }
@@ -27,6 +29,16 @@ h3 {
     margin-right: auto;
     display:block;
 }
+
+@media (max-width: 992px) {
+    .parentContainer {
+        max-width: 900px;
+    }
+}
+
+
+
+.parentContainer
 
 .myMap {
     position: inherit;
