@@ -30,9 +30,9 @@ h3 {
     display:block;
 }
 
-@media (max-width: 1981px) {
-    .parentContainer {
-        max-width: 768px;
+@media (max-width: 1200px) {
+    li, a{
+        font-size: 4em;
     }
 }
 
