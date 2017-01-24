@@ -26,7 +26,7 @@ h3 {
 .mastheadtop {
     margin-bottom: 10px;
 }
-.parentContainer {
+.parentContainer, .defaultparentContainer {
     min-width: 500px;
     width:auto;
     max-width: 1200px;
