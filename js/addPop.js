@@ -16,7 +16,8 @@ function fadeOutnojquery(el) {
 };
 window.onload = function() {
     setTimeout(function() {
+        var $speech = $('.myMap');
+        $speech.css("visibility", "visible")
         fadeOutnojquery(preloader);
     }, 0);
-}
-;
+};
