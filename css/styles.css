@@ -1,0 +1,30 @@
+.masthead {
+    padding: 20px;
+}
+h3 {
+    display: inline;
+}
+.myimage {
+    position: fixed;
+    top:20px;
+    right:30px;
+    max-width: 30px;
+    max-height: 30px;
+    border: 2px solid white;
+    z-index:99;
+    border-radius:4px;
+}
+
+.mastheadtop {
+    margin-bottom: 10px;
+}
+
+.parentContainer {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myMap {
+    position: inherit;
+}
