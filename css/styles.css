@@ -32,8 +32,12 @@ h3 {
 
 @media (max-width: 1200px) {
     li, a{
-        font-size: 4em;
+        font-size: 2em;
     }
+    .masthead {
+        padding: 0px;
+    }
+
 }
 
 
