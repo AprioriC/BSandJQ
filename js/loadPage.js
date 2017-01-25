@@ -65,6 +65,7 @@ function fadeOutnojquery() { //функция возник при загрузк
 $(".parentContainer").ready(function() { //при первом обращении к странице загрузить содержимое
     var sstr =window.location.pathname+location.hash;
     var kksk=getNormalAdr(sstr);
+
     if (sstr.indexOf("#")==-1) {
         indexpage=0;
     }
