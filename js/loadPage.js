@@ -63,9 +63,9 @@ function fadeOutnojquery() { //функция возник при загрузк
 };
 
 $(".parentContainer").ready(function() { //при первом обращении к странице загрузить содержимое
-    var sstr =window.location.pathname;
+    var sstr =window.location.pathname+location.hash;
     var kksk="";
-    if (sstr.indexOf("index")!=-1) {
+    if (sstr.indexOf("#")==-1) {
         kksk="indexcash.html";
         indexpage=0;
     }
@@ -79,6 +79,7 @@ $(".parentContainer").ready(function() { //при первом обращени�
     }
 
     $('.parentContainer').load(kksk);
+    activeAdder(kksk);
 });
 
 
@@ -92,15 +93,27 @@ $(document).ready(function() {
         };
 
         var url = $(this).attr('href');
-        var a = url.split('.')[0]+"cash.html";
+        var downloadA="";
+        if (url.indexOf("#")==-1) {
+            downloadA="indexcash.html";
+        }
+        else if (url.indexOf("map")!=-1) {
+            downloadA="mapcash.html";
+        }
+        else {
+            downloadA = "timercash.html";
+        }
 
-        $('.parentContainer').load(a);
+
+
+
+        $('.parentContainer').load(downloadA);
         // А вот так просто меняется ссылка
         if(url != window.location){
             window.history.pushState(null, null, url);
         };
 
-        activeAdder(url);
+        activeAdder(downloadA);
         // Предотвращаем дефолтное поведение
         return false;
     });
@@ -108,16 +121,24 @@ $(document).ready(function() {
 
 $(window).bind('popstate', function() {
 
-    var lastPage = location.pathname;
-
-    var lastUrl = lastPage.split('.')[0]+"cash.html";
+    var lastPage = location.pathname+location.hash;
+    var lastUrl="" ;
+    if (lastPage.indexOf("#")==-1) {
+        lastUrl="indexcash.html";
+    }
+    else if (lastPage.indexOf("map")!=-1) {
+        lastUrl="mapcash.html";
+    }
+    else {
+        lastUrl = "timercash.html";
+    }
 
     $('.parentContainer').load(lastUrl);
 
     if (indexpage==2) {
         clearInterval(timerId);
     };
-    activeAdder(lastPage);
+    activeAdder(lastUrl);
 
 });
 
