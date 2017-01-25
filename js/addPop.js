@@ -2,7 +2,7 @@
  * Created by andre on 24.01.2017.
  */
 "use strict";
-function fadeOutnojquery() {
+/*function fadeOutnojquery() {
     var el =document.getElementById("escapingBall_1");
     var $speech = $('.myMap');
     $speech.css("visibility", "visible");
@@ -14,7 +14,7 @@ function fadeOutnojquery() {
             el.style.display = "none";
         }
     }, 10);
-};
+};*/
 /*
 document.getElementsByClassName(".myMap").onload = function() {
     var $speech = $('.myMap');
