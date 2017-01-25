@@ -64,17 +64,14 @@ function fadeOutnojquery() { //функция возник при загрузк
 
 $(".parentContainer").ready(function() { //при первом обращении к странице загрузить содержимое
     var sstr =window.location.pathname+location.hash;
-    var kksk="";
+    var kksk=getNormalAdr(sstr);
     if (sstr.indexOf("#")==-1) {
-        kksk="indexcash.html";
         indexpage=0;
     }
     else if (sstr.indexOf("map")!=-1) {
-        kksk="mapcash.html";
         indexpage=1;
     }
     else {
-        kksk = "timercash.html";
         indexpage=2;
     }
 
@@ -93,16 +90,7 @@ $(document).ready(function() {
         };
 
         var url = $(this).attr('href');
-        var downloadA="";
-        if (url.indexOf("#")==-1) {
-            downloadA="indexcash.html";
-        }
-        else if (url.indexOf("map")!=-1) {
-            downloadA="mapcash.html";
-        }
-        else {
-            downloadA = "timercash.html";
-        }
+        var downloadA=getNormalAdr(url);
 
 
 
@@ -122,16 +110,7 @@ $(document).ready(function() {
 $(window).bind('popstate', function() {
 
     var lastPage = location.pathname+location.hash;
-    var lastUrl="" ;
-    if (lastPage.indexOf("#")==-1) {
-        lastUrl="indexcash.html";
-    }
-    else if (lastPage.indexOf("map")!=-1) {
-        lastUrl="mapcash.html";
-    }
-    else {
-        lastUrl = "timercash.html";
-    }
+    var lastUrl=getNormalAdr(lastPage);
 
     $('.parentContainer').load(lastUrl);
 
@@ -143,22 +122,34 @@ $(window).bind('popstate', function() {
 });
 
 
+function getNormalAdr(mypage) {
+    if (mypage.indexOf("#")==-1) {
+        return "indexcash.html";
+    }
+    else if (mypage.indexOf("map")!=-1) {
+        return "mapcash.html";
+    }
+    else {
+        return "timercash.html";
+    }
+};
+
 function activeAdder(myurl) {
 
     $("#firstLi").removeClass();
     $("#secondLi").removeClass();
     $("#thirdLi").removeClass();
-    if (myurl.indexOf("index")!=-1) {
-        $("#firstLi").addClass("active");
-        indexpage=0;
-    }
-    else if (myurl.indexOf("map")!=-1) {
+    if (myurl.indexOf("map")!=-1) {
         $("#secondLi").addClass("active");
         indexpage=1;
     }
-    else {
+    else if (myurl.indexOf("timer")!=-1){
         $("#thirdLi").addClass("active");
         indexpage=2;
+    }
+    else {
+        $("#firstLi").addClass("active");
+        indexpage=0;
     }
 }
 
