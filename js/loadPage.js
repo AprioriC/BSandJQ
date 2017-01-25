@@ -8,7 +8,9 @@ var secTitles = ['секунда', 'секунды', 'секунд'];
 
 var myDate = Date.now();
 
-var indexpage=-1; //0-index.html , 1- map.html, 2-timer.html, необходимы для нормальной работый перехода "назад"
+//значения indexpage 0-index.html , 1- map.html, 2-timer.html,
+//необходимы для завершения таймера при переходе назад
+var indexpage=-1;
 
 function getSeconds() {
     var newDate = Date.now();
@@ -17,10 +19,12 @@ function getSeconds() {
     return mySeconds;
 };
 
-var timerId; //находится здесь чтобы потом завершить таймер
+//таймер
+var timerId;
+
 
 function upTimer() {
-
+    //выполняется при переходе на страницу таймера
     var myTmrMin = $(".TimerMinVal");
     var myTmrSec = $(".TimerSecVal");
 
@@ -29,7 +33,6 @@ function upTimer() {
 
     changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName);
 
-
     timerId = setInterval(function() {
         changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName);
 
@@ -37,7 +40,7 @@ function upTimer() {
 };
 
 function changeTimerValues(myTmrMin,myTmrSec, myTmrMinName,myTmrSecName) {
-
+    //изменение тайсера
     var valSec = getSeconds();
     var minut = Math.floor(valSec/60);
     var second = valSec-60*minut;
@@ -48,7 +51,9 @@ function changeTimerValues(myTmrMin,myTmrSec, myTmrMinName,myTmrSecName) {
     myTmrSecName.html(declOfNum(second, secTitles ));
 };
 
-function fadeOutnojquery() { //функция возник при загрузке карты
+function fadeOutnojquery() {
+    //функция возник при загрузке карты
+    //удаляет preloader
     var el =document.getElementById("escapingBall_1");
     var $speech = $('.myMap');
     $speech.css("visibility", "visible");
@@ -62,7 +67,8 @@ function fadeOutnojquery() { //функция возник при загрузк
     }, 10);
 };
 
-$(".parentContainer").ready(function() { //при первом обращении к странице загрузить содержимое
+$(".parentContainer").ready(function() {
+    //при первом обращении к сайту загружает содержимое в контейнер
     var sstr =window.location.pathname+location.hash;
     var kksk=getNormalAdr(sstr);
 
@@ -82,8 +88,12 @@ $(".parentContainer").ready(function() { //при первом обращени�
 
 
 $(document).ready(function() {
+
+
+    //инициализация всплывающих тултипов
     $('[data-toggle="tooltip"]').tooltip();
 
+    //при клике по ссылке загрузить в контейнер html код
     $('a').click(function() {
 
         if (window.location.pathname.indexOf("timer")!=-1) {
@@ -92,9 +102,6 @@ $(document).ready(function() {
 
         var url = $(this).attr('href');
         var downloadA=getNormalAdr(url);
-
-
-
 
         $('.parentContainer').load(downloadA);
         // А вот так просто меняется ссылка
@@ -109,7 +116,7 @@ $(document).ready(function() {
 });
 
 $(window).bind('popstate', function() {
-
+    //для нормальной работы перехода назад в браузере
     var lastPage = location.pathname+location.hash;
     var lastUrl=getNormalAdr(lastPage);
 
@@ -124,6 +131,7 @@ $(window).bind('popstate', function() {
 
 
 function getNormalAdr(mypage) {
+    //преобразует ссылку из <a> в ссылку на необходимый html код
     if (mypage.indexOf("#")==-1) {
         return "indexcash.html";
     }
@@ -136,7 +144,8 @@ function getNormalAdr(mypage) {
 };
 
 function activeAdder(myurl) {
-
+    //выделяет ссылку на текущую страницу
+    //в качестве аргумента - ссылка на html код (ссылка из <a> тоже подойдет, но не рекомендуется)
     $("#firstLi").removeClass();
     $("#secondLi").removeClass();
     $("#thirdLi").removeClass();

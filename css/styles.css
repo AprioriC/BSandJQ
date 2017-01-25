@@ -2,20 +2,15 @@
     padding: 20px;
 }
 
-
 /*.footer {
     height: 80px;
     margin-top: -80px;
 }*/
 
-
 th {
     font-weight: normal!important;
 }
 
-tr:first-child {
-    font-size: 1.1em;
-}
 .iamcontainer {
     padding: 20px;
 }
@@ -128,15 +123,9 @@ td>p {
 }
 
 @media (max-width: 1200px) {
-    li, a{
-        font-size: 2em;
-    }
     .myimage {
         max-width: 55px;
         max-height: 55px;
-    }
-    .timerContainer {
-        font-size: 2em;
     }
     .defaultparentContainer {
         margin-bottom:20px;
@@ -146,16 +135,23 @@ td>p {
         height: 700px;
     }
 
-    .myFace {
-    }
-
     .iamcontainer,
     .tableContainerfirst,
-    .tableContainersecond {
+    .tableContainersecond,
+    .timerContainer,
+    li,
+    a
+    {
         font-size: 2em;
     }
+
     h4,
     td a{
         font-size: 1.2em;
+    }
+}
+@media (max-width: 991px) {
+    .myFaceimg {
+        width: 400px;
     }
 }
