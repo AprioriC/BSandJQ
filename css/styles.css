@@ -9,6 +9,55 @@
 }*/
 
 
+th {
+    font-weight: normal!important;
+}
+
+tr:first-child {
+    font-size: 1.1em;
+}
+.iamcontainer {
+    padding: 20px;
+}
+
+.tableContainerfirst,
+.tableContainersecond {
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+}
+.tableContainerfirst {
+    width:70%;
+}
+.tableContainersecond {
+    width:90%;
+}
+
+.basicTable {
+    margin: auto;
+    margin-top: 30px;
+}
+
+
+.myFace {
+    float:left;
+}
+
+.myFaceimg {
+    width:200px;
+    display: block;
+    margin: 0 auto;
+}
+.myType {
+    margin-top:5%;
+}
+
+.tableContainersecond table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+
 h3 {
     display: inline;
 }
@@ -36,6 +85,14 @@ h3 {
 }
 .defaultparentContainer {
     margin-bottom:50px;
+}
+
+.parentContainer {
+    padding-bottom: 50px;
+}
+
+td>p {
+    text-indent:1.5em;
 }
 
 .timerContainer {
@@ -87,5 +144,18 @@ h3 {
 
     .myMap {
         height: 700px;
+    }
+
+    .myFace {
+    }
+
+    .iamcontainer,
+    .tableContainerfirst,
+    .tableContainersecond {
+        font-size: 2em;
+    }
+    h4,
+    td a{
+        font-size: 1.2em;
     }
 }
