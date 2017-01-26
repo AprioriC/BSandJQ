@@ -8,6 +8,9 @@ Main stylesheets
     padding: 20px;
 }
 
+.mapColor {
+    background-color: #e2e2e2;
+}
 
 th {
     font-weight: normal!important;
