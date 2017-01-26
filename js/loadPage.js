@@ -150,20 +150,24 @@ function activeAdder(myurl) {
         $("#firstLi").addClass("active");
     }
 
-    //обновляем индекс страницы
+    //обновляем индекс страницыи заголовок
     updateindex(myurl);
 }
 
 function updateindex(myurl) {
     //обновление индекса страницы
+    //и обновление заголовка
     if (myurl.indexOf("map")!=-1) {
         indexpage=1;
+        $('title').html("Карта");
     }
     else if (myurl.indexOf("timer")!=-1){
         indexpage=2;
+        $('title').html("Таймер");
     }
     else {
         indexpage=0;
+        $('title').html("Резюме");
     }
 }
 
