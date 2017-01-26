@@ -1,11 +1,13 @@
+
+/*
+
+Main stylesheets
+*/
+
 .masthead {
     padding: 20px;
 }
 
-/*.footer {
-    height: 80px;
-    margin-top: -80px;
-}*/
 
 th {
     font-weight: normal!important;
