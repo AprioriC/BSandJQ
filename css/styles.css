@@ -151,6 +151,11 @@ td>p {
     td a{
         font-size: 1.2em;
     }
+
+
+    h3 .header {
+        font-size: 1.5em;
+    }
 }
 @media (max-width: 991px) {
     .myFaceimg {
