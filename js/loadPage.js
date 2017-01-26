@@ -72,16 +72,6 @@ $(".parentContainer").ready(function() {
     var sstr =window.location.pathname+location.hash;
     var kksk=getNormalAdr(sstr);
 
-    if (sstr.indexOf("#")==-1) {
-        indexpage=0;
-    }
-    else if (sstr.indexOf("map")!=-1) {
-        indexpage=1;
-    }
-    else {
-        indexpage=2;
-    }
-
     $('.parentContainer').load(kksk);
     activeAdder(kksk);
 });
@@ -125,6 +115,7 @@ $(window).bind('popstate', function() {
     if (indexpage==2) {
         clearInterval(timerId);
     };
+
     activeAdder(lastUrl);
 
 });
@@ -151,20 +142,34 @@ function activeAdder(myurl) {
     $("#thirdLi").removeClass();
     if (myurl.indexOf("map")!=-1) {
         $("#secondLi").addClass("active");
-        indexpage=1;
     }
     else if (myurl.indexOf("timer")!=-1){
         $("#thirdLi").addClass("active");
-        indexpage=2;
     }
     else {
         $("#firstLi").addClass("active");
+    }
+
+    //обновляем индекс страницы
+    updateindex(myurl);
+}
+
+function updateindex(myurl) {
+    //обновление индекса страницы
+    if (myurl.indexOf("map")!=-1) {
+        indexpage=1;
+    }
+    else if (myurl.indexOf("timer")!=-1){
+        indexpage=2;
+    }
+    else {
         indexpage=0;
     }
 }
 
-function declOfNum(number, titles)
-{
+
+function declOfNum(number, titles) {
+    //склонение слов
     var  cases = [2, 0, 1, 1, 1, 2];
     return titles[
         (number % 100 > 4 && number % 100 < 20)
