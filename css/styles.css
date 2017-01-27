@@ -135,30 +135,11 @@ td>p {
     .defaultparentContainer {
         margin-bottom:20px;
     }
-
     .myMap {
         height: 700px;
     }
 
-    .iamcontainer,
-    .tableContainerfirst,
-    .tableContainersecond,
-    .timerContainer,
-    li,
-    a
-    {
-        font-size: 2em;
-    }
 
-    h4,
-    td a{
-        font-size: 1.2em;
-    }
-
-
-    h3 .header {
-        font-size: 1.5em;
-    }
 }
 @media (max-width: 991px) {
     .myFaceimg {
