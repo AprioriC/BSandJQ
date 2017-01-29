@@ -3,9 +3,6 @@
  */
 "use strict";
 
-var minTitles = ['минута', 'минуты', 'минут'];
-var secTitles = ['секунда', 'секунды', 'секунд'];
-
 var myDate = Date.now();
 
 //значения indexpage 0-index.html , 1- map.html, 2-timer.html,
@@ -31,24 +28,35 @@ function upTimer() {
     var myTmrMinName = $(".timerMinName");
     var myTmrSecName = $(".timerSecName");
 
-    changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName);
+    var secondsContainer = $(".seconds-container");
+    var minutesContainer = $(".minutes-container");
+
+    changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer);
 
     timerId = setInterval(function() {
-        changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName);
+        changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer);
 
     },1000)
 };
 
-function changeTimerValues(myTmrMin,myTmrSec, myTmrMinName,myTmrSecName) {
+function changeTimerValues(myTmrMin,myTmrSec, myTmrMinName,myTmrSecName, minutesContainer, secondsContainer) {
     //изменение тайсера
     var valSec = getSeconds();
-    var minut = Math.floor(valSec/60);
-    var second = valSec-60*minut;
-    myTmrMin.html(minut+"");
-    myTmrSec.html(second+"");
+    var minut = valSec/60;
+    var second = valSec-60*Math.floor(minut);
+    myTmrMin.html(checkNum(Math.floor(minut))+"");
+    myTmrSec.html(checkNum(second)+"");
+    var secGradus = (second/60)*360;
+    var minGradus = ((minut%60)/60)*360;
+    secondsContainer.css("transform","rotateZ("+secGradus+"deg)");
+    minutesContainer.css("transform","rotateZ("+minGradus+"deg)");
 
-    myTmrMinName.html(declOfNum(minut, minTitles ));
-    myTmrSecName.html(declOfNum(second, secTitles ));
+
+    //myTmrMinName.html(declOfNum(minut, minTitles ));
+   // myTmrSecName.html(declOfNum(second, secTitles ));
+};
+function checkNum(number) {
+    return number<10?"0"+number:number;
 };
 
 function fadeOutnojquery() {
@@ -169,17 +177,4 @@ function updateindex(myurl) {
         indexpage=0;
         $('title').html("Резюме");
     }
-}
-
-
-function declOfNum(number, titles) {
-    //склонение слов
-    var  cases = [2, 0, 1, 1, 1, 2];
-    return titles[
-        (number % 100 > 4 && number % 100 < 20)
-            ?
-            2
-            :
-            cases[(number % 10 < 5) ? number % 10 : 5]
-        ];
 }
