@@ -164,10 +164,6 @@ td>p {
 }
 
 @media (max-width: 1200px) {
-    .myimage {
-        max-width: 55px;
-        max-height: 55px;
-    }
     .defaultparentContainer {
         margin-bottom:20px;
     }
