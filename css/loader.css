@@ -4,7 +4,9 @@ preloader
 
 */
 
-
+html {
+    overflow-y: scroll;
+}
 
 
 .circle {
