@@ -111,12 +111,10 @@ h3 {
     display:block;
 }
 
-@media (max-width: 1240px) {
-    .parentContainer, .defaultparentContainer {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
 
+body {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 body {
