@@ -211,6 +211,21 @@ td>p {
     z-index:10;
 }
 
+@media (max-width: 510px) {
+    .under {
+        width: 215px;
+        height:215px;
+        margin-top:-197px;
+    }
+
+    .clock {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+
+
 .clock.simple:after {
     background: #000;
     border-radius: 50%;
