@@ -5,6 +5,7 @@
 
 var myDate = Date.now();
 
+var amountOfTicks = 0;
 //значения indexpage 0-index.html , 1- map.html, 2-timer.html,
 //необходимы для завершения таймера при переходе назад
 var indexpage = -1;
@@ -24,6 +25,8 @@ function upTimer() {
     var myTmrMin = $(".TimerMinVal");
     var myTmrSec = $(".TimerSecVal");
 
+    amountOfTicks=0;
+
     var myTmrMinName = $(".timerMinName");
     var myTmrSecName = $(".timerSecName");
 
@@ -34,22 +37,27 @@ function upTimer() {
 
     timerId = setInterval(function () {
         changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer);
-    }, 1000)
+
+    }, 100)
 };
 
 function changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer) {
     //изменение тайсера
-    var valSec = getMiliSeconds();
+
+    var valMiliSec =getMiliSeconds();
+    var valSec = Math.round(valMiliSec/1000);
     var minut = valSec / 60;
-    var second = valSec - 60 * Math.floor(minut);
-    myTmrMin.html(checkNum(Math.floor(minut)) + "");
-    myTmrSec.html(checkNum(second) + "");
-    var secGradus = (second / 60) * 360;
+    if (amountOfTicks%10==0) {
+        var second = valSec - 60 * Math.floor(minut);
+        myTmrMin.html(checkNum(Math.floor(minut)) + "");
+        myTmrSec.html(checkNum(second) + "");
+    }
+    var secGradus = (valMiliSec/1000 / 60) * 360;
     var minGradus = ((minut % 60) / 60) * 360;
     secondsContainer.css("transform", "rotateZ(" + secGradus + "deg)");
     minutesContainer.css("transform", "rotateZ(" + minGradus + "deg)");
 
-
+    amountOfTicks++;
     //myTmrMinName.html(declOfNum(minut, minTitles ));
     // myTmrSecName.html(declOfNum(second, secTitles ));
 };
