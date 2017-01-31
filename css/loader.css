@@ -20,13 +20,16 @@ html {
     z-index: 100;
     background: #e5e5e5;
     border-radius: 50%;
+
 }
 
 @keyframes holyCircle {
-    0%   {width:0%;
+    0%   {
+        width:0%;
         height:0%;
     }
-    50% {width:250%;
+    50% {
+        width:250%;
         margin-top: -50%;
         margin-left:-100%;
         opacity: 0.2;
@@ -36,44 +39,6 @@ html {
         opacity: 0;
     }
 }
-
-@-webkit-keyframes holyCircle {
-    0%   {width:0%;
-        height:0%;
-    }
-    50% {width:250%;
-        margin-top: -50%;
-        margin-left:-100%;
-        opacity: 0.2;
-        height:250%;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@-moz-keyframes holyCircle {
-    0%   {width:0%;
-        height:0%;
-    }
-    50% {width:250%;
-        margin-top: -50%;
-        margin-left:-100%;
-        opacity: 0.2;
-        height:250%;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-
-
-
-
-
-
-
 
 
 

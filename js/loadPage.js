@@ -72,7 +72,6 @@ function fadeOutnojquery() {
     var el = document.getElementById("escapingBall_1");
 
     $(".circle").css("animation", "holyCircle 4s");
-
     var map = document.getElementsByClassName("myMap")[0];
     var $speech = $('.myMap');
     el.style.opacity = 1;
