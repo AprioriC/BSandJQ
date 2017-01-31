@@ -9,10 +9,9 @@ var myDate = Date.now();
 //необходимы для завершения таймера при переходе назад
 var indexpage = -1;
 
-function getSeconds() {
+function getMiliSeconds() {
     var newDate = Date.now();
     var mySeconds = newDate - myDate;
-    mySeconds = Math.round(mySeconds / 1000)
     return mySeconds;
 };
 
@@ -40,7 +39,7 @@ function upTimer() {
 
 function changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer) {
     //изменение тайсера
-    var valSec = getSeconds();
+    var valSec = getMiliSeconds();
     var minut = valSec / 60;
     var second = valSec - 60 * Math.floor(minut);
     myTmrMin.html(checkNum(Math.floor(minut)) + "");
