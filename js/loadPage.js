@@ -7,12 +7,12 @@ var myDate = Date.now();
 
 //значения indexpage 0-index.html , 1- map.html, 2-timer.html,
 //необходимы для завершения таймера при переходе назад
-var indexpage=-1;
+var indexpage = -1;
 
 function getSeconds() {
     var newDate = Date.now();
-    var mySeconds = newDate-myDate;
-    mySeconds=Math.round(mySeconds/1000)
+    var mySeconds = newDate - myDate;
+    mySeconds = Math.round(mySeconds / 1000)
     return mySeconds;
 };
 
@@ -33,79 +33,96 @@ function upTimer() {
 
     changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer);
 
-    timerId = setInterval(function() {
+    timerId = setInterval(function () {
         changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer);
-
-    },1000)
+    }, 1000)
 };
 
-function changeTimerValues(myTmrMin,myTmrSec, myTmrMinName,myTmrSecName, minutesContainer, secondsContainer) {
+function changeTimerValues(myTmrMin, myTmrSec, myTmrMinName, myTmrSecName, minutesContainer, secondsContainer) {
     //изменение тайсера
     var valSec = getSeconds();
-    var minut = valSec/60;
-    var second = valSec-60*Math.floor(minut);
-    myTmrMin.html(checkNum(Math.floor(minut))+"");
-    myTmrSec.html(checkNum(second)+"");
-    var secGradus = (second/60)*360;
-    var minGradus = ((minut%60)/60)*360;
-    secondsContainer.css("transform","rotateZ("+secGradus+"deg)");
-    minutesContainer.css("transform","rotateZ("+minGradus+"deg)");
+    var minut = valSec / 60;
+    var second = valSec - 60 * Math.floor(minut);
+    myTmrMin.html(checkNum(Math.floor(minut)) + "");
+    myTmrSec.html(checkNum(second) + "");
+    var secGradus = (second / 60) * 360;
+    var minGradus = ((minut % 60) / 60) * 360;
+    secondsContainer.css("transform", "rotateZ(" + secGradus + "deg)");
+    minutesContainer.css("transform", "rotateZ(" + minGradus + "deg)");
 
 
     //myTmrMinName.html(declOfNum(minut, minTitles ));
-   // myTmrSecName.html(declOfNum(second, secTitles ));
+    // myTmrSecName.html(declOfNum(second, secTitles ));
 };
 function checkNum(number) {
-    return number<10?"0"+number:number;
+    return number < 10 ? "0" + number : number;
 };
 
 function fadeOutnojquery() {
     //функция возник при загрузке карты
     //удаляет preloader
-    var el =document.getElementById("escapingBall_1");
+    var el = document.getElementById("escapingBall_1");
+
+    $(".circle").css("animation", "holyCircle 4s");
+
+    var map = document.getElementsByClassName("myMap")[0];
     var $speech = $('.myMap');
-    $speech.css("visibility", "visible");
     el.style.opacity = 1;
-    var interhellopreloader = setInterval(function() {
+    var interhellopreloader = setInterval(function () {
         el.style.opacity = el.style.opacity - 0.05;
         if (el.style.opacity <= 0.05) {
             clearInterval(interhellopreloader);
             el.style.display = "none";
+            map.style.opacity=0;
+            $speech.css("visibility", "visible");
+
+
+            var mapload = setInterval(function () {
+                map.style.opacity = Number(map.style.opacity) + 0.05;
+                if (map.style.opacity>=0.9) {
+                    map.style.opacity=1;
+                    clearInterval(mapload);
+                }
+            }, 25);
         }
-    }, 10);
+
+    }, 45);
+
 };
 
-$(".parentContainer").ready(function() {
+$(".parentContainer").ready(function () {
     //при первом обращении к сайту загружает содержимое в контейнер
-    var sstr =window.location.pathname+location.hash;
-    var kksk=getNormalAdr(sstr);
+    var sstr = window.location.pathname + location.hash;
+    var kksk = getNormalAdr(sstr);
 
     $('.parentContainer').load(kksk);
     activeAdder(kksk);
 });
 
 
-$(document).ready(function() {
+$(document).ready(function () {
 
 
     //инициализация всплывающих тултипов
     $('[data-toggle="tooltip"]').tooltip();
 
     //при клике по ссылке загрузить в контейнер html код
-    $('a').click(function() {
+    $('a').click(function () {
 
-        if (window.location.pathname.indexOf("timer")!=-1) {
+        if (window.location.pathname.indexOf("timer") != -1) {
             clearInterval(timerId);
-        };
+        }
+        ;
 
         var url = $(this).attr('href');
-        var downloadA=getNormalAdr(url);
+        var downloadA = getNormalAdr(url);
 
         $('.parentContainer').load(downloadA);
         // А вот так просто меняется ссылка
-        if(url != window.location){
+        if (url != window.location) {
             window.history.pushState(null, null, url);
-        };
+        }
+        ;
 
         activeAdder(downloadA);
         // Предотвращаем дефолтное поведение
@@ -113,16 +130,17 @@ $(document).ready(function() {
     });
 });
 
-$(window).bind('popstate', function() {
+$(window).bind('popstate', function () {
     //для нормальной работы перехода назад в браузере
-    var lastPage = location.pathname+location.hash;
-    var lastUrl=getNormalAdr(lastPage);
+    var lastPage = location.pathname + location.hash;
+    var lastUrl = getNormalAdr(lastPage);
 
     $('.parentContainer').load(lastUrl);
 
-    if (indexpage==2) {
+    if (indexpage == 2) {
         clearInterval(timerId);
-    };
+    }
+    ;
 
     activeAdder(lastUrl);
 
@@ -131,10 +149,10 @@ $(window).bind('popstate', function() {
 
 function getNormalAdr(mypage) {
     //преобразует ссылку из <a> в ссылку на необходимый html код
-    if (mypage.indexOf("#")==-1) {
+    if (mypage.indexOf("#") == -1) {
         return "indexcash.html";
     }
-    else if (mypage.indexOf("map")!=-1) {
+    else if (mypage.indexOf("map") != -1) {
         return "mapcash.html";
     }
     else {
@@ -148,10 +166,10 @@ function activeAdder(myurl) {
     $("#firstLi").removeClass();
     $("#secondLi").removeClass();
     $("#thirdLi").removeClass();
-    if (myurl.indexOf("map")!=-1) {
+    if (myurl.indexOf("map") != -1) {
         $("#secondLi").addClass("active");
     }
-    else if (myurl.indexOf("timer")!=-1){
+    else if (myurl.indexOf("timer") != -1) {
         $("#thirdLi").addClass("active");
     }
     else {
@@ -165,16 +183,16 @@ function activeAdder(myurl) {
 function updateindex(myurl) {
     //обновление индекса страницы
     //и обновление заголовка
-    if (myurl.indexOf("map")!=-1) {
-        indexpage=1;
+    if (myurl.indexOf("map") != -1) {
+        indexpage = 1;
         $('title').html("Карта");
     }
-    else if (myurl.indexOf("timer")!=-1){
-        indexpage=2;
+    else if (myurl.indexOf("timer") != -1) {
+        indexpage = 2;
         $('title').html("Таймер");
     }
     else {
-        indexpage=0;
+        indexpage = 0;
         $('title').html("Резюме");
     }
 }

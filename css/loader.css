@@ -3,20 +3,98 @@
 preloader
 
 */
-#escapingBallG{
-    position:relative;
-    width:125px;
-    height:43px;
-    top: -295px;
-    margin-left: auto;
-    margin-right: auto;
+
+
+
+
+.circle {
+    position:absolute;
+    width:0px;
+    height:0px;
+    left: 0;
+    top: 0;
+    margin-top: 0px;
+    margin-left: 0px;
+    z-index: 100;
+    background: #e5e5e5;
+    border-radius: 50%;
 }
 
-@media (max-width: 1200px) {
+@keyframes holyCircle {
+    0%   {width:0%;
+        height:0%;
+    }
+    50% {width:250%;
+        margin-top: -50%;
+        margin-left:-100%;
+        opacity: 0.2;
+        height:250%;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes holyCircle {
+    0%   {width:0%;
+        height:0%;
+    }
+    50% {width:250%;
+        margin-top: -50%;
+        margin-left:-100%;
+        opacity: 0.2;
+        height:250%;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes holyCircle {
+    0%   {width:0%;
+        height:0%;
+    }
+    50% {width:250%;
+        margin-top: -50%;
+        margin-left:-100%;
+        opacity: 0.2;
+        height:250%;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#escapingBallG{
+    position:absolute;
+    width:125px;
+    height:43px;
+    left: 50%;
+    top: 50%;
+    margin-top: -21px;
+    margin-left: -62px;
+}
+
+/*@media (max-width: 1200px) {
     #escapingBallG{
         top: -370px;
     }
 }
+*/
+
 
 .escapingBallG{
     background-color:rgb(0,0,0);

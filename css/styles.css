@@ -9,7 +9,8 @@ Main stylesheets
 }
 
 .mapColor {
-    background-color: #e2e2e2;
+  /*  background-color: #f9f2f4;*/
+    overflow: hidden;
 }
 
 th {
@@ -38,6 +39,11 @@ th {
     margin-top: 30px;
 }
 
+.mapLoad {
+    position:relative;
+    overflow: hidden;
+}
+
 
 .myFace {
     float:left;
@@ -51,6 +57,27 @@ th {
 .myType {
     margin-top:5%;
 }
+
+nav a {
+    background-color: white;
+
+    border-radius: 2px;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+}
+
+.nav  li > a:hover {
+    background-color: #d8e0fa;
+}
+
+.nav li>a {
+    -moz-transition: background-color 0.5s 0.1s ease;
+    -o-transition: background-color 0.5s 0.1s ease;
+    -webkit-transition: background-color 0.5s 0.1s ease;
+}
+
+
+
+/*#b2cafa;*/
 
 .tableContainersecond table tr:nth-child(odd) {
     background-color: #f2f2f2;
@@ -67,7 +94,7 @@ h3 {
     right:30px;
     max-width: 30px;
     max-height: 30px;
-    border: 2px solid white;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
     z-index:99;
     border-radius:4px;
 }
@@ -83,12 +110,35 @@ h3 {
     margin-right: auto;
     display:block;
 }
+
+@media (max-width: 1240px) {
+    .parentContainer, .defaultparentContainer {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+}
+
+body {
+    background: #edeef0;
+}
+
+a {
+    background-color: whitesmoke;
+}
+
 .defaultparentContainer {
-    margin-bottom:50px;
+    margin-bottom:30px;
+
 }
 
 .parentContainer {
-    padding-bottom: 50px;
+    margin-bottom: 50px;
+    padding:10px;
+    border: 1px solid #d0d0d0;
+    z-index: -99;
+    background-color: white;
+    box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
 }
 
 td>p {
@@ -126,8 +176,6 @@ td>p {
     .myMap {
         height: 700px;
     }
-
-
 }
 
 /**/
@@ -139,24 +187,30 @@ td>p {
     position: relative;
     margin-top:-395px;
     border-radius: 10px;
-    z-index: -3;
+    z-index: 1;
     margin-left: auto;
     margin-right: auto;
     display:block;
 }
-.demo-container { text-align: center;}
+.demo-container {
+    text-align: center;
+    z-index: 2;
+}
 .clock {
     border-radius: 50%;
     background: #fff no-repeat center;
     background-size: 88%;
 
     position: relative;
-
     display:inline-block;
 
     width: 360px;
     height: 360px;
     margin-top: 20px;
+}
+
+.clock {
+    z-index:10;
 }
 
 .clock.simple:after {
