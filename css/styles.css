@@ -164,6 +164,12 @@ td>p {
     height: 70vh;
 }
 
+.nav li > a:focus {
+    background-color: white;
+}
+
+
+
 /*@media (max-width: 1200px) {
     .defaultparentContainer {
         margin-bottom:20px;
@@ -233,10 +239,6 @@ td>p {
     width: 5%;
     height: 5%;
     z-index: 10;
-}
-
-.nav li > a:hover, .nav li > a:focus {
-    background-color: white;
 }
 
 
