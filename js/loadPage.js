@@ -20,6 +20,7 @@ function getMiliSeconds() {
 var timerId;
 
 
+
 function upTimer() {
     //выполняется при переходе на страницу таймера
     var myTmrMin = $(".TimerMinVal");
@@ -109,7 +110,6 @@ $(".parentContainer").ready(function () {
 
 $(document).ready(function () {
 
-
     //инициализация всплывающих тултипов
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -139,6 +139,7 @@ $(document).ready(function () {
 
 $(window).bind('popstate', function () {
     //для нормальной работы перехода назад в браузере
+
     var lastPage = location.pathname + location.hash;
     var lastUrl = getNormalAdr(lastPage);
 
@@ -148,9 +149,7 @@ $(window).bind('popstate', function () {
         clearInterval(timerId);
     }
     ;
-
     activeAdder(lastUrl);
-
 });
 
 

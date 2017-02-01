@@ -234,6 +234,12 @@ td>p {
     height: 5%;
     z-index: 10;
 }
+
+.nav li > a:hover, .nav li > a:focus {
+    background-color: white;
+}
+
+
 .minutes-container, .hours-container, .seconds-container, .lightCircleContainer{
     position: absolute;
     top: 0;
